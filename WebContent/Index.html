@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function startMonitoring()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+ xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+} 
+xmlhttp.open("GET","ActionServlet",true);
+xmlhttp.send();
+}
+
+
+function stopMonitoring()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+ xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+} 
+xmlhttp.open("GET","StopActionServlet",true);
+xmlhttp.send();
+}
+
+</script>
+</head>
+<body>
+
+<h2>Start Monitoring</h2>
+<button type="button" onclick="startMonitoring()">Start Monitoring</button>
+
+
+<h2>Stop Monitoring</h2>
+<button type="button" onclick="stopMonitoring()">Stop Monitoring</button>
+
+
+<div id="myDiv"></div>
+
+</body>
+</html>
